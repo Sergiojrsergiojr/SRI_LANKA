@@ -1,75 +1,63 @@
 package ENTRADAS;
 
-import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Image;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import java.awt.Window.Type;
-import java.awt.Toolkit;
-import javax.swing.JScrollBar;
-import javax.swing.ImageIcon;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.SwingConstants;
-import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Ventana_1 extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana_1 frame = new Ventana_1();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                Ventana_1 frame = new Ventana_1();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
-	/**
-	 * Create the frame.
-	 */
     public Ventana_1() {
-
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+        setBounds(0,0,1920,1080);
         // Panel con fondo escalado
         contentPane = new JPanel() {
             private static final long serialVersionUID = 1L;
             private Image backgroundImage = new ImageIcon(
-                Ventana_1.class.getResource("/IMAGENES/Fondo.png")).getImage();
+                Ventana_1.class.getResource("/imagenes/Fondo SRY_LANKA.png")).getImage();
+
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 // Dibuja la imagen escalada al tamaño del panel
                 g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-                
-               
             }
         };
-        
+
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
-        contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-        
-        JLabel lbl_Nombre = new JLabel("SRI LANKA");
-        lbl_Nombre.setForeground(new Color(0, 0, 0));
-        lbl_Nombre.setBackground(new Color(255, 255, 255));
-        lbl_Nombre.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 64));
-        contentPane.add(lbl_Nombre);
-    }
+        contentPane.setLayout(null);
 
+        // Puedes agregar otros componentes encima del fondo
+        
+        JLabel lbl_Titulo = new JLabel("SRY LANKA");
+        lbl_Titulo.setBounds(693, 82, 160, 78);
+        lbl_Titulo.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 34));
+        contentPane.add(lbl_Titulo);
+        
+        JButton btnNewButton = new JButton("New button");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	Ventana_2 venta=new Ventana_2();
+        	venta.setVisible(true);
+        	}
+        });
+        btnNewButton.setBounds(764, 522, 89, 23);
+        contentPane.add(btnNewButton);
+    }
 }
