@@ -16,6 +16,11 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Ventana_1 extends JFrame {
 
@@ -42,10 +47,10 @@ public class Ventana_1 extends JFrame {
 	 * Create the frame.
 	 */
     public Ventana_1() {
+		setTitle("SRI LANKA");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.setExtendedState(this.MAXIMIZED_BOTH);
+        setBounds(0,0,1920,1080);
         // Panel con fondo escalado
         contentPane = new JPanel() {
             private static final long serialVersionUID = 1L;
@@ -63,13 +68,36 @@ public class Ventana_1 extends JFrame {
         
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
-        contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        contentPane.setLayout(null);
         
         JLabel lbl_Nombre = new JLabel("SRI LANKA");
-        lbl_Nombre.setForeground(new Color(0, 0, 0));
+        lbl_Nombre.setBounds(861, 28, 245, 77);
+        lbl_Nombre.setForeground(new Color(205, 133, 63));
         lbl_Nombre.setBackground(new Color(255, 255, 255));
         lbl_Nombre.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 64));
         contentPane.add(lbl_Nombre);
+        
+        JButton btn_comprar = new JButton("COMPRAR ENTRADAS");
+        btn_comprar.setFont(new Font("Stencil", Font.PLAIN, 15));
+        btn_comprar.setBackground(new Color(255, 255, 255));
+        btn_comprar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Ventana_2 venta= new Ventana_2();
+        		venta.setVisible(true);        	}
+        });
+        btn_comprar.setBounds(906, 700, 200, 50);
+        contentPane.add(btn_comprar);
+        
+        JTextArea txt_Intro = new JTextArea();
+        txt_Intro.setFont(new Font("Algerian", Font.PLAIN, 20));
+        txt_Intro.setEnabled(false);
+        txt_Intro.setText(" Bienvenidos a SRI LANKA – La experiencia nocturna que estabas esperando \r\n\r\nSumérgete en un paraíso de música, luces y energía sin límites. SRI LANKA no es solo una discoteca, es un viaje sensorial donde la fiesta cobra vida en cada rincón. Inspirada en el exotismo y la vibra tropical de su nombre, nuestra sala te transporta a un ambiente único, con los mejores DJs, espectáculos en vivo, coctelería de autor y un público que vibra al ritmo de la noche.\r\n\r\nCada fin de semana, abrimos las puertas a una experiencia diferente: sets explosivos, artistas invitados y un ambiente exclusivo que no encontrarás en ningún otro lugar. Ya sea que vengas a celebrar, a bailar o simplemente a vivir la noche, en SRI LANKA cada instante es inolvidable.\r\n\r\n ¡Compra ya tus entradas y asegura tu lugar en la pista!\r\nNo te quedes fuera del epicentro de la fiesta. Los cupos son limitados y las noches en SRI LANKA son leyenda.\r\n\r\n👉 Reserva ahora. Vive el ritmo. Siente la jungla.\r\nSRI LANKA – Donde la noche se convierte en aventura.\r\n\r\n");
+        txt_Intro.setOpaque(false);
+        txt_Intro.setBackground(new Color(0,0,0,0));
+        txt_Intro.setForeground(new Color(255, 255, 255));
+        txt_Intro.setBounds(688, 116, 636, 561);
+        contentPane.add(txt_Intro);
+        txt_Intro.setLineWrap(true);
+        txt_Intro.setWrapStyleWord(true);
     }
-
 }
