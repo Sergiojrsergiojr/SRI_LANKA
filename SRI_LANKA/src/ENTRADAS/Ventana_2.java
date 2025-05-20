@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Ventana_2 extends JFrame {
 
@@ -37,13 +39,20 @@ public class Ventana_2 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
+	public static void main(String[] args) 
+	{
+		EventQueue.invokeLater(new Runnable() 
+		{
+			public void run() 
+			{
+				try 
+				{
 					Ventana_2 frame = new Ventana_2();
 					frame.setVisible(true);
-				} catch (Exception e) {
+				} 
+				
+				catch (Exception e) 
+				{
 					e.printStackTrace();
 				}
 			}
@@ -55,20 +64,23 @@ public class Ventana_2 extends JFrame {
 	 */
 	public Ventana_2() {
 		setTitle("SRI LANKA");
+		
+		setIconImage(new ImageIcon(getClass().getResource("/IMAGENES/Logo.png")).getImage());
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(0, 0, 1920, 1080);
-		contentPane = new JPanel() {
-		 private static final long serialVersionUID = 1L;
-         private Image backgroundImage = new ImageIcon(
-             Ventana_1.class.getResource("/IMAGENES/Fondo.png")).getImage();
-         @Override
-         protected void paintComponent(Graphics g) {
-             super.paintComponent(g);
-             // Dibuja la imagen escalada al tamaño del panel
-             g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
-             
-         }
-         
+		contentPane = new JPanel() 
+		{
+			private static final long serialVersionUID = 1L;
+			private Image backgroundImage = new ImageIcon(
+             Ventana_Principal.class.getResource("/IMAGENES/Fondo.png")).getImage();
+			
+			@Override
+			protected void paintComponent(Graphics g) 
+			{
+				super.paintComponent(g);
+				// Dibuja la imagen escalada al tamaño del panel
+				g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);
+			}
 		};
 		
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -101,16 +113,43 @@ public class Ventana_2 extends JFrame {
 		contentPane.add(lbl_Nombre);
 		
 		btn_Jueves = new JButton("PULSE AQUÍ");
+		btn_Jueves.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				Ventana_jueves venta= new Ventana_jueves();
+				venta.setVisible(true);
+			}
+		});
+		
 		btn_Jueves.setFont(new Font("Stencil", Font.PLAIN, 15));
 		btn_Jueves.setBounds(902, 188, 200, 50);
 		contentPane.add(btn_Jueves);
 		
 		btn_Viernes = new JButton("PULSE AQUÍ");
+		btn_Viernes.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				Ventana_viernes venta= new Ventana_viernes();
+				venta.setVisible(true);
+			}
+		});
+		
 		btn_Viernes.setFont(new Font("Stencil", Font.PLAIN, 15));
 		btn_Viernes.setBounds(902, 340, 200, 50);
 		contentPane.add(btn_Viernes);
 		
 		btn_Sabado = new JButton("PULSE AQUÍ");
+		btn_Sabado.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				Ventana_sabado venta= new Ventana_sabado();
+				venta.setVisible(true);
+			}
+		});
+		
 		btn_Sabado.setFont(new Font("Stencil", Font.PLAIN, 15));
 		btn_Sabado.setBounds(902, 518, 200, 50);
 		contentPane.add(btn_Sabado);
