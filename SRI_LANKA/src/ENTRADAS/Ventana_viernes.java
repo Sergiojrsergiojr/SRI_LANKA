@@ -12,6 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -78,6 +80,7 @@ import java.awt.event.ActionEvent;
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
+		//Labels para las opciones que ofrece con información y su precio
 		JLabel lbl_entrada_viernes = new JLabel("ENTRADA VIERNES");
 		lbl_entrada_viernes.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 64));
 		lbl_entrada_viernes.setBounds(702, 40, 499, 77);
@@ -176,6 +179,15 @@ import java.awt.event.ActionEvent;
 		contentPane.add(btn_comprar_2consu_viernes);
 
 		JButton btn_qr_comprar_viernes = new JButton("COMPRAR GRATIS");
+		btn_qr_comprar_viernes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				ImageIcon icono=new ImageIcon(getClass().getResource("/IMAGENES/pulgalcito.jpg"));
+				String mensaje="Entrada comprada correctamente";
+				String titulo="ACEPTADO";
+				JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE, icono);
+			}
+		});
 		btn_qr_comprar_viernes.setBounds(1112, 448, 140, 27);
 		contentPane.add(btn_qr_comprar_viernes);
 
@@ -190,7 +202,7 @@ import java.awt.event.ActionEvent;
 		lbl_horario_qr_viernes.setForeground(new Color(205,133,63));
 		contentPane.add(lbl_horario_qr_viernes);
 
-		JLabel lbl_mapeo = new JLabel("New label");
+		JLabel lbl_mapeo = new JLabel("");
 		lbl_mapeo.setIcon(new ImageIcon(Ventana_viernes.class.getResource("/IMAGENES/mapeo.png")));
 		lbl_mapeo.setBounds(730, 558, 425, 412);
 		contentPane.add(lbl_mapeo);
@@ -247,6 +259,7 @@ import java.awt.event.ActionEvent;
 		btn_comprar_negras.setBounds(1163, 753, 140, 27);
 		contentPane.add(btn_comprar_negras);
 
+		//Labels para mostrar las imagenes de los laterales
 		JLabel lbl_totem_izq = new JLabel("");
         lbl_totem_izq.setIcon(new ImageIcon(Ventana_Principal.class.getResource("/IMAGENES/Totem.png")));
         lbl_totem_izq.setBounds(110, 150, 360, 371);

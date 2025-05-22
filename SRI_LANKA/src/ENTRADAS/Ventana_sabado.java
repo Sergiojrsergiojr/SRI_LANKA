@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -82,6 +84,7 @@ import java.awt.event.ActionEvent;
 		lbl_entrada_sabado.setForeground(new Color(205, 133, 63));
 		contentPane.add(lbl_entrada_sabado);
 
+		//Labels para las opciones que ofrece con información y su precio
 		JLabel lbl_consumicion = new JLabel("CONSUMICIONES");
 		lbl_consumicion.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 30));
 		lbl_consumicion.setBounds(730, 172, 198, 34);
@@ -174,8 +177,16 @@ import java.awt.event.ActionEvent;
 		btn_comprar_2consu_sabado.setBounds(1112, 321, 121, 27);
 		contentPane.add(btn_comprar_2consu_sabado);
 
-		//Boton por si entrar a través de un RPP
 		JButton btn_qr_comprar_sabado = new JButton("COMPRAR GRATIS");
+		btn_qr_comprar_sabado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				ImageIcon icono=new ImageIcon(getClass().getResource("/IMAGENES/pulgalcito.jpg"));
+				String mensaje="Entrada comprada correctamente";
+				String titulo="ACEPTADO";
+				JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE, icono);
+			}
+		});
 		btn_qr_comprar_sabado.setBounds(1112, 448, 140, 27);
 		contentPane.add(btn_qr_comprar_sabado);
 
@@ -190,13 +201,12 @@ import java.awt.event.ActionEvent;
 		lbl_horario_qr_sabado.setForeground(new Color(205,133,63));
 		contentPane.add(lbl_horario_qr_sabado);
 
-		//Imagen para que se visualice el mapa de la discoteca
+		//Label para mostrar la imagen del mapa de la discoteca
 		JLabel lbl_mapeo = new JLabel("New label");
 		lbl_mapeo.setIcon(new ImageIcon(Ventana_viernes.class.getResource("/IMAGENES/mapeo.png")));
 		lbl_mapeo.setBounds(730, 558, 425, 412);
 		contentPane.add(lbl_mapeo);
 
-		//Boton por se quiere comprar la mesa de 250€
 		JButton btn_comprar_verdes = new JButton("250€ COMPRAR");
 		btn_comprar_verdes.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e)
@@ -223,7 +233,6 @@ import java.awt.event.ActionEvent;
 		btn_comprar_verdes.setBounds(1165, 679, 140, 27);
 		contentPane.add(btn_comprar_verdes);
 
-		//Boton por se quiere comprar la mesa de 500€
 		JButton btn_comprar_negras = new JButton("500€ COMPRAR\r\n");
 		btn_comprar_negras.addActionListener(new ActionListener()
 		{
@@ -251,6 +260,7 @@ import java.awt.event.ActionEvent;
 		btn_comprar_negras.setBounds(1163, 753, 140, 27);
 		contentPane.add(btn_comprar_negras);
 
+		//Labels para mostrar las imagenes de los laterales
 		JLabel lbl_totem_izq = new JLabel("");
 		lbl_totem_izq.setIcon(new ImageIcon(Ventana_Principal.class.getResource("/IMAGENES/Totem.png")));
 		lbl_totem_izq.setBounds(110, 150, 360, 371);
