@@ -16,7 +16,10 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+
+import static ENTRADAS.Ventana_1.*;
 
 public class Ventana_Pago extends JFrame {
 
@@ -25,6 +28,10 @@ public class Ventana_Pago extends JFrame {
 	private JTextField textField_nº_tarjeta;
 	private JTextField textField_caducidad;
 	private JTextField textField_cvc;
+	
+	public static int NTarjeta;
+	public static String FechaCad="";
+	public static int CVC;
 
 	/**
 	 * Launch the application.
@@ -67,7 +74,7 @@ public class Ventana_Pago extends JFrame {
 			 protected void paintComponent(Graphics g) 
 			{
                 super.paintComponent(g);
-                // Dibuja la imagen escalada al tamaño del panel
+                //Dibuja la imagen escalada al tamaño del panel
                 g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), this);  
             }
         };
@@ -76,6 +83,7 @@ public class Ventana_Pago extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Labels para los campos requeridos del pago
 		JLabel lbl_pago = new JLabel("PAGO CON TARJETA");
 		lbl_pago.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 64));
 		lbl_pago.setBounds(702, 40, 499, 77);
@@ -100,6 +108,7 @@ public class Ventana_Pago extends JFrame {
 		lbl_cvc.setForeground(new Color(205,133,63));
 		contentPane.add(lbl_cvc);
 		
+		//Campos de texto para poder rellenar los datos de la tarjeta
 		textField_nº_tarjeta = new JTextField();
 		textField_nº_tarjeta.setBounds(730, 231, 160, 30);
 		contentPane.add(textField_nº_tarjeta);
@@ -115,6 +124,7 @@ public class Ventana_Pago extends JFrame {
 		contentPane.add(textField_cvc);
 		textField_cvc.setColumns(10);
 		
+		//Botón para realizar el pago
 		JButton btn_terminar = new JButton("REALIZAR PAGO");
 		btn_terminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -122,8 +132,35 @@ public class Ventana_Pago extends JFrame {
 				String mensaje="Entrada comprada correctamente";
 				String titulo="ACEPTADO";
 				JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE, icono);
+
+				//Meter el numero de tarjeta al public static
+				NTarjeta=Integer.parseInt(textField_nº_tarjeta.getText());
+				
+				//Poner FechaCad con el texto puesto en el textField
+				FechaCad=textField_caducidad.getText();
+
+				//Meter el CVC al public static
+				CVC=Integer.parseInt(textField_cvc.getText());
+
+				ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
+	        	try 
+	        	{
+					x.conectar();
+
+					String sentencia="INSERT INTO pagos(Nombre,Apellido,NTarjeta,FechaCad,CVC) VALUES ('"+Nombre+"','"+Apellido+"','"+NTarjeta+"','"+FechaCad+"','"+CVC+"')";
+					x.ejecutarInsertDeleteUpdate(sentencia);
+					x.desconectar();
+				} 
+	        	catch (SQLException e1) 
+	        	{
+					e1.printStackTrace();
+				}
+
+				Ventana_Entrada ventanaEntrada = new Ventana_Entrada(getTitle());
+			    ventanaEntrada.setVisible(true);		
 			}
 		});
+		
 		btn_terminar.setFont(new Font("Stencil", Font.PLAIN, 15));
 		btn_terminar.setBounds(761, 618, 200, 50);
 		btn_terminar.setBackground(new Color(255, 255, 255));

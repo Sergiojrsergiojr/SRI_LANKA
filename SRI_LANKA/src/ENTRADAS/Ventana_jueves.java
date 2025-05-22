@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -82,6 +84,7 @@ public class Ventana_jueves extends JFrame {
 	setContentPane(contentPane);
 	contentPane.setLayout(null);
 
+	//Labels para las opciones que ofrece con información y su precio
 	JLabel lbl_entrada_jueves = new JLabel("ENTRADA JUEVES");
 	lbl_entrada_jueves.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 64));
 	lbl_entrada_jueves.setBounds(702, 40, 499, 77);
@@ -195,10 +198,20 @@ public class Ventana_jueves extends JFrame {
 	contentPane.add(lbl_qr_jueves);
 
 	JButton btn_qr_comprar_jueves = new JButton("COMPRAR GRATIS");
+	btn_qr_comprar_jueves.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) 
+		{
+			ImageIcon icono=new ImageIcon(getClass().getResource("/IMAGENES/pulgalcito.jpg"));
+			String mensaje="Entrada comprada correctamente";
+			String titulo="ACEPTADO";
+			JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE, icono);
+		}
+	});
 	btn_qr_comprar_jueves.setBounds(1112, 448, 140, 27);
 	contentPane.add(btn_qr_comprar_jueves);
 
-	JLabel lbl_mapeo = new JLabel("New label");
+	//Label para mostrar la imagen del mapa de la discoteca
+	JLabel lbl_mapeo = new JLabel("");
 	lbl_mapeo.setIcon(new ImageIcon(Ventana_viernes.class.getResource("/IMAGENES/mapeo.png")));
 	lbl_mapeo.setBounds(730, 558, 425, 412);
 	contentPane.add(lbl_mapeo);
@@ -256,5 +269,16 @@ public class Ventana_jueves extends JFrame {
 	
 		btn_comprar_negras.setBounds(1163, 753, 140, 27);
 		contentPane.add(btn_comprar_negras);
+		
+		//Labels para mostrar las imagenes de los laterales
+		JLabel lbl_totem_izq = new JLabel("");
+        lbl_totem_izq.setIcon(new ImageIcon(Ventana_Principal.class.getResource("/IMAGENES/Totem.png")));
+        lbl_totem_izq.setBounds(110, 150, 360, 371);
+        contentPane.add(lbl_totem_izq);
+
+       JLabel lbl_totem_der = new JLabel("");
+       lbl_totem_der.setIcon(new ImageIcon(Ventana_Principal.class.getResource("/IMAGENES/Totem.png")));
+       lbl_totem_der.setBounds(1460, 150, 360, 371);
+       contentPane.add(lbl_totem_der);
 	}
 }
