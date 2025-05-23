@@ -20,21 +20,16 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import static ENTRADAS.Ventana_1.*;
 
-
-
 public class Ventana_jueves extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	public static String Dia="Jueves";
-	public static int Precio;
-
-	//conectar con la base de datos
-
+private static final long serialVersionUID = 1L;
+private JPanel contentPane;
+public static String Dia="Jueves";
+public static int Precio;
 
 	/**
-	 * Launch the application.
-	 */
+	* Launch the application.
+	*/
 
 	public static void main(String[] args)
 	{
@@ -56,16 +51,21 @@ public class Ventana_jueves extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
-	 */
+	* Create the frame.
+	*/
 	public Ventana_jueves()
 	{
+		//Título de la ventana
 		setTitle("SRI LANKA\r\n");
+		//Poner logo en la ventana
 		setIconImage(new ImageIcon(getClass().getResource("/IMAGENES/Logo.png")).getImage());
+		//Tipo de cerrar la ventana
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		//Medidas de la ventana
 		setBounds(0, 0, 1920, 1080);
 		contentPane = new JPanel()
 	{
+		//Poner imagen de fondo en la ventana
 		private static final long serialVersionUID = 1L;
 		private Image backgroundImage = new ImageIcon(
 			Ventana_Principal.class.getResource("/IMAGENES/Fondo.png")).getImage();
@@ -140,6 +140,7 @@ public class Ventana_jueves extends JFrame {
         try
         {
         	Precio=15;
+        	//Conexión a la base de datos
         	ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
         	x.conectar();
         	String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
@@ -153,6 +154,7 @@ public class Ventana_jueves extends JFrame {
         
         Ventana_Pago venta= new Ventana_Pago();
         venta.setVisible(true);
+        dispose();
 		}
 	});
 	
@@ -167,6 +169,7 @@ public class Ventana_jueves extends JFrame {
 			try
 			{
 				Precio=20;
+				//Conexión a la base de datos
 				ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
 				x.conectar();
 				String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
@@ -180,6 +183,7 @@ public class Ventana_jueves extends JFrame {
 			
 			Ventana_Pago venta= new Ventana_Pago();
 			venta.setVisible(true);
+			dispose();
 		}
 	});
 	
@@ -201,12 +205,15 @@ public class Ventana_jueves extends JFrame {
 	btn_qr_comprar_jueves.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) 
 		{
+			//Imagen para que al comprar la entrada gartis salga en el JOptionPane
 			ImageIcon icono=new ImageIcon(getClass().getResource("/IMAGENES/pulgalcito.jpg"));
+			//Configuracuión del mensaje para el JOptionPane
 			String mensaje="Entrada comprada correctamente";
 			String titulo="ACEPTADO";
 			JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE, icono);
 		}
 	});
+	
 	btn_qr_comprar_jueves.setBounds(1112, 448, 140, 27);
 	contentPane.add(btn_qr_comprar_jueves);
 
@@ -224,6 +231,7 @@ public class Ventana_jueves extends JFrame {
 			try
 			{
 				Precio=250;
+				//Conexión a la base de datos
 				ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
 				x.conectar();
 				String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
@@ -237,6 +245,7 @@ public class Ventana_jueves extends JFrame {
 			
 			Ventana_Pago venta= new Ventana_Pago();
 			venta.setVisible(true);
+			dispose();
 		}
 	});
 	
@@ -251,6 +260,7 @@ public class Ventana_jueves extends JFrame {
 			try
 			{
 				Precio=500;
+				//Conexión a la base de datos
 				ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
 				x.conectar();
 				String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
@@ -264,6 +274,7 @@ public class Ventana_jueves extends JFrame {
 			
 			Ventana_Pago venta= new Ventana_Pago();
 			venta.setVisible(true);
+			dispose();
 		}
 	});
 	

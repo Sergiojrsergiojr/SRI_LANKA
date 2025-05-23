@@ -23,19 +23,19 @@ import static ENTRADAS.Ventana_1.*;
 
 public class Ventana_Pago extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField textField_nº_tarjeta;
-	private JTextField textField_caducidad;
-	private JTextField textField_cvc;
+private static final long serialVersionUID = 1L;
+private JPanel contentPane;
+private JTextField textField_nº_tarjeta;
+private JTextField textField_caducidad;
+private JTextField textField_cvc;
 	
-	public static int NTarjeta;
-	public static String FechaCad="";
-	public static int CVC;
+public static int NTarjeta;
+public static String FechaCad="";
+public static int CVC;
 
 	/**
-	 * Launch the application.
-	 */
+	* Launch the application.
+	*/
 	public static void main(String[] args) 
 	{
 		EventQueue.invokeLater(new Runnable() 
@@ -57,16 +57,21 @@ public class Ventana_Pago extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
-	 */
-	public Ventana_Pago() {
+	* Create the frame.
+	*/
+	public Ventana_Pago() 
+	{
+		//Título de la ventana
 		setTitle("SRI LANKA");
-		
+		//Logo para la ventana
 		setIconImage(new ImageIcon(getClass().getResource("/IMAGENES/Logo.png")).getImage());
+		//Tipo de cerrar la ventana
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//Tamaño de la ventana
 		setBounds(0,0,1920,1080);
 		contentPane = new JPanel() 
 		{
+			//Imagen de fondo de la ventana
 			private static final long serialVersionUID = 1L;
 			private Image backgroundImage = new ImageIcon(
 	            Ventana_Principal.class.getResource("/IMAGENES/Fondo.png")).getImage();
@@ -142,6 +147,7 @@ public class Ventana_Pago extends JFrame {
 				//Meter el CVC al public static
 				CVC=Integer.parseInt(textField_cvc.getText());
 
+				//Conexión a la base de datos
 				ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
 	        	try 
 	        	{
@@ -157,7 +163,8 @@ public class Ventana_Pago extends JFrame {
 				}
 
 				Ventana_Entrada ventanaEntrada = new Ventana_Entrada(getTitle());
-			    ventanaEntrada.setVisible(true);		
+			    ventanaEntrada.setVisible(true);
+			    dispose();
 			}
 		});
 		

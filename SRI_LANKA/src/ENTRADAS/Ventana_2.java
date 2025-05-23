@@ -19,26 +19,26 @@ import java.awt.event.ActionEvent;
 
 public class Ventana_2 extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JLabel lbl_Jueves;
-	private JLabel lbl_Viernes;
-	private JLabel lbl_Sabado;
-	private JLabel lbl_Nombre;
-	private JButton btn_Jueves;
-	private JButton btn_Viernes;
-	private JButton btn_Sabado;
-	private JLabel lbl_info_jueves;
-	private JLabel lbl_img_viernes;
-	private JLabel lbl_info_viernes;
-	private JLabel lbl_img_sabado;
-	private JLabel lbl_info_sabado;
-	private JLabel lbl_condiciones;
-	private JLabel lbl_privacidad;
+private static final long serialVersionUID = 1L;
+private JPanel contentPane;
+private JLabel lbl_Jueves;
+private JLabel lbl_Viernes;
+private JLabel lbl_Sabado;
+private JLabel lbl_Nombre;
+private JButton btn_Jueves;
+private JButton btn_Viernes;
+private JButton btn_Sabado;
+private JLabel lbl_info_jueves;
+private JLabel lbl_img_viernes;
+private JLabel lbl_info_viernes;
+private JLabel lbl_img_sabado;
+private JLabel lbl_info_sabado;
+private JLabel lbl_condiciones;
+private JLabel lbl_privacidad;
 
 	/**
-	 * Launch the application.
-	 */
+	* Launch the application.
+	*/
 	public static void main(String[] args) 
 	{
 		EventQueue.invokeLater(new Runnable() 
@@ -60,13 +60,16 @@ public class Ventana_2 extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
-	 */
+	* Create the frame.
+	*/
 	public Ventana_2() {
+		//Título de la ventana
 		setTitle("SRI LANKA");
-		
+		//Poner el logo en la ventana
 		setIconImage(new ImageIcon(getClass().getResource("/IMAGENES/Logo.png")).getImage());
+		//Tipo de como se cierra la ventana
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		//Medida de la ventana
 		setBounds(0, 0, 1920, 1080);
 		contentPane = new JPanel() 
 		{
@@ -74,6 +77,7 @@ public class Ventana_2 extends JFrame {
 			private Image backgroundImage = new ImageIcon(
              Ventana_Principal.class.getResource("/IMAGENES/Fondo.png")).getImage();
 			
+			//Medidas del fondo
 			@Override
 			protected void paintComponent(Graphics g) 
 			{
@@ -86,7 +90,7 @@ public class Ventana_2 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		//Labels para los días de discoteca
 		lbl_Jueves = new JLabel("JUEVES\r\n");
 		lbl_Jueves.setForeground(new Color(205, 133, 63));
 		lbl_Jueves.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 30));
@@ -104,7 +108,7 @@ public class Ventana_2 extends JFrame {
 		lbl_Sabado.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 30));
 		lbl_Sabado.setBounds(730, 519, 101, 34);
 		contentPane.add(lbl_Sabado);
-		
+		//Título de la página
 		lbl_Nombre = new JLabel("VENTA DE ENTRADAS");
 		lbl_Nombre.setForeground(new Color(205,133,63));
 		lbl_Nombre.setFont(new Font("Bernard MT Condensed", Font.PLAIN, 64));
@@ -112,6 +116,7 @@ public class Ventana_2 extends JFrame {
 		lbl_Nombre.setBounds(702, 40, 499, 77);
 		contentPane.add(lbl_Nombre);
 		
+		//Botón para comprar entrada del jueves
 		btn_Jueves = new JButton("PULSE AQUÍ");
 		btn_Jueves.addActionListener(new ActionListener() 
 		{
@@ -119,6 +124,7 @@ public class Ventana_2 extends JFrame {
 			{
 				Ventana_jueves venta= new Ventana_jueves();
 				venta.setVisible(true);
+				dispose();
 			}
 		});
 		
@@ -126,6 +132,7 @@ public class Ventana_2 extends JFrame {
 		btn_Jueves.setBounds(902, 188, 200, 50);
 		contentPane.add(btn_Jueves);
 		
+		//Botón para comprar entrada del viernes
 		btn_Viernes = new JButton("PULSE AQUÍ");
 		btn_Viernes.addActionListener(new ActionListener() 
 		{
@@ -133,6 +140,7 @@ public class Ventana_2 extends JFrame {
 			{
 				Ventana_viernes venta= new Ventana_viernes();
 				venta.setVisible(true);
+				dispose();
 			}
 		});
 		
@@ -140,6 +148,7 @@ public class Ventana_2 extends JFrame {
 		btn_Viernes.setBounds(902, 340, 200, 50);
 		contentPane.add(btn_Viernes);
 		
+		//Botón para comprar la entrada del sábado
 		btn_Sabado = new JButton("PULSE AQUÍ");
 		btn_Sabado.addActionListener(new ActionListener() 
 		{
@@ -147,49 +156,59 @@ public class Ventana_2 extends JFrame {
 			{
 				Ventana_sabado venta= new Ventana_sabado();
 				venta.setVisible(true);
+				dispose();
 			}
 		});
 		
+		//Medidas del botón del sábado
 		btn_Sabado.setFont(new Font("Stencil", Font.PLAIN, 15));
 		btn_Sabado.setBounds(902, 518, 200, 50);
 		contentPane.add(btn_Sabado);
 		
-		JLabel lbl_img_jueves = new JLabel("New label");
+		//Label para foto de la fiesta del jueves
+		JLabel lbl_img_jueves = new JLabel("");
 		lbl_img_jueves.setIcon(new ImageIcon(Ventana_2.class.getResource("/IMAGENES/Captura de pantalla 2025-05-12 140545.png")));
 		lbl_img_jueves.setBounds(639, 176, 81, 115);
 		contentPane.add(lbl_img_jueves);
 		
+		//Información de la entrada del jueves
 		lbl_info_jueves = new JLabel("<html>HORARIO: 00:00h-06:00h<br>EDAD: +18<br>SRI LANKA 📍</html>");
 		lbl_info_jueves.setBounds(730, 217, 140, 59);
 		lbl_info_jueves.setForeground(new Color(205, 133, 63));
 		contentPane.add(lbl_info_jueves);
 		
-		lbl_img_viernes = new JLabel("New label");
+		//Label para foto de la fiesta del viernes
+		lbl_img_viernes = new JLabel("");
 		lbl_img_viernes.setIcon(new ImageIcon(Ventana_2.class.getResource("/IMAGENES/Captura de pantalla 2025-05-12 140545.png")));
 		lbl_img_viernes.setBounds(639, 346, 81, 115);
 		contentPane.add(lbl_img_viernes);
 		
+		////Información de la entrada del viernes
 		lbl_info_viernes = new JLabel("<html>HORARIO: 00:00h-06:00h<br>EDAD: +18<br>SRI LANKA 📍</html>");
 		lbl_info_viernes.setForeground(new Color(205, 133, 63));
 		lbl_info_viernes.setBounds(730, 382, 140, 59);
 		contentPane.add(lbl_info_viernes);
 		
-		lbl_img_sabado = new JLabel("New label");
+		//Label para foto de la fiesta del sábado
+		lbl_img_sabado = new JLabel("");
 		lbl_img_sabado.setIcon(new ImageIcon(Ventana_2.class.getResource("/IMAGENES/Captura de pantalla 2025-05-12 140545.png")));
 		lbl_img_sabado.setBounds(639, 519, 81, 115);
 		contentPane.add(lbl_img_sabado);
 		
+		////Información de la entrada del sábado
 		lbl_info_sabado = new JLabel("<html>HORARIO: 00:00h-06:00h<br>EDAD: +18<br>SRI LANKA 📍</html>");
 		lbl_info_sabado.setForeground(new Color(205, 133, 63));
 		lbl_info_sabado.setBounds(730, 564, 140, 59);
 		contentPane.add(lbl_info_sabado);
 		
+		//Label para las condiciones de acceso
 		lbl_condiciones = new JLabel("<html>Condiciones de Acceso<br>- En SRI LANKA, nos reservamos el derecho de admisión. Para garantizar la mejor experiencia a nuestros asistentes, aplicamos las siguientes condiciones:<br>Edad mínima: 18 años (con identificación oficial vigente).<br>- Vestimenta: No se permite ropa deportiva, chanclas ni atuendos ofensivos.<br>- Estado: No se admiten personas bajo efectos de alcohol o sustancias ilícitas.<br>- Objetos prohibidos: No se permite ingresar con armas, drogas, alimentos o bebidas externas.<br>- Conducta: Actitudes violentas o irrespetuosas no serán toleradas.<br>- Grabaciones: Podrían tomarse imágenes o videos con fines promocionales.</html>");
 		lbl_condiciones.setBounds(1318, 214, 309, 378);
 		lbl_condiciones.setForeground(new Color(255, 255, 255));
 		lbl_condiciones.setFont(new Font("Algerian", Font.PLAIN, 20));
 		contentPane.add(lbl_condiciones);
 		
+		//Label para la política de privacidad
 		lbl_privacidad = new JLabel("<html>Política de Privacidad:<br>En SRI LANKA, valoramos tu privacidad y protegemos tus datos.<br>- Recopilamos información solo para fines operativos y promocionales (reservas, listas, sorteos).<br>- Tus datos no serán compartidos con terceros sin tu consentimiento.<br>- Puedes ejercer tus derechos de acceso, rectificación o eliminación escribiéndonos a: privacidad@srilanka.com.<br>- Contamos con cámaras de videovigilancia por razones de seguridad.");
 		lbl_privacidad.setForeground(Color.WHITE);
 		lbl_privacidad.setFont(new Font("Algerian", Font.PLAIN, 20));
