@@ -50,19 +50,22 @@ import java.awt.event.ActionEvent;
 	});
 	}
 
-/**
-
-* Create the frame.
-
-*/
+	/**
+	* Create the frame.
+	*/
 	public Ventana_viernes() 
 	{
+		//Título de la ventana
 		setTitle("SRI LANKA");
+		//Poner logo en la ventana
 		setIconImage(new ImageIcon(getClass().getResource("/IMAGENES/Logo.png")).getImage());
+		//Tipo de cerrar la ventana
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		//Medidas de la ventana
 		setBounds(0, 0, 1920, 1080);
 		contentPane = new JPanel()
-	{
+		{
+			//Poner imagen de fondo en la ventana
 			private static final long serialVersionUID = 1L;
 			private Image backgroundImage = new ImageIcon(
 				Ventana_Principal.class.getResource("/IMAGENES/Fondo.png")).getImage();
@@ -134,31 +137,7 @@ import java.awt.event.ActionEvent;
 				try 
 	        	{
 	        		Precio=15;
-	        		ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
-	        		x.conectar();
-	        		String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
-	    			x.ejecutarInsertDeleteUpdate(sentencia);
-	    			x.desconectar();
-	        	}
-	        	catch (SQLException ex)
-	        	{
-	        		ex.printStackTrace();
-	        	}
-				Ventana_Pago venta= new Ventana_Pago();
-				venta.setVisible(true);
-			}
-		});
-
-		btn_comprar_1consu_viernes.setBounds(1112, 262, 121, 27);
-		contentPane.add(btn_comprar_1consu_viernes);
-		
-		JButton btn_comprar_2consu_viernes = new JButton("20€ COMPRAR");
-		btn_comprar_2consu_viernes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				try 
-	        	{
-	        		Precio=20;
+	        		//Conexión con la base de datos
 	        		ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
 	        		x.conectar();
 	        		String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
@@ -172,6 +151,35 @@ import java.awt.event.ActionEvent;
 				
 				Ventana_Pago venta= new Ventana_Pago();
 				venta.setVisible(true);
+				dispose();
+			}
+		});
+
+		btn_comprar_1consu_viernes.setBounds(1112, 262, 121, 27);
+		contentPane.add(btn_comprar_1consu_viernes);
+		
+		JButton btn_comprar_2consu_viernes = new JButton("20€ COMPRAR");
+		btn_comprar_2consu_viernes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+	        	{
+	        		Precio=20;
+	        		//Conexión con la base de datos
+	        		ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
+	        		x.conectar();
+	        		String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
+	    			x.ejecutarInsertDeleteUpdate(sentencia);
+	    			x.desconectar();
+	        	}
+	        	catch (SQLException ex)
+	        	{
+	        		ex.printStackTrace();
+	        	}
+				
+				Ventana_Pago venta= new Ventana_Pago();
+				venta.setVisible(true);
+				dispose();
 			}
 		});
 
@@ -191,6 +199,7 @@ import java.awt.event.ActionEvent;
 		btn_qr_comprar_viernes.setBounds(1112, 448, 140, 27);
 		contentPane.add(btn_qr_comprar_viernes);
 
+		//Label para el qr
 		JLabel lbl_qr_viernes = new JLabel("QR GRATIS");
 		lbl_qr_viernes.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.PLAIN, 20));
 		lbl_qr_viernes.setBounds(730, 417, 130, 23);
@@ -214,6 +223,7 @@ import java.awt.event.ActionEvent;
 				try 
 	        	{
 	        		Precio=250;
+	        		//Conexión de la base de datos
 	        		ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
 	        		x.conectar();
 	        		String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
@@ -227,19 +237,21 @@ import java.awt.event.ActionEvent;
 
 				Ventana_Pago venta= new Ventana_Pago();
 				venta.setVisible(true);
+				dispose();
 			}
 		});
 
 		btn_comprar_verdes.setBounds(1165, 679, 140, 27);
 		contentPane.add(btn_comprar_verdes);
 
-		JButton btn_comprar_negras = new JButton("500€ COMPRAR\r\n");
+		JButton btn_comprar_negras = crearBotonJueves();
 		btn_comprar_negras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
 				try 
 	        	{
 	        		Precio=500;
+	        		//Conexión a la base de datos
 	        		ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
 	        		x.conectar();
 	        		String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
@@ -253,6 +265,7 @@ import java.awt.event.ActionEvent;
 
 				Ventana_Pago venta= new Ventana_Pago();
 				venta.setVisible(true);
+				dispose();
 			}
 		});
 
@@ -260,7 +273,7 @@ import java.awt.event.ActionEvent;
 		contentPane.add(btn_comprar_negras);
 
 		//Labels para mostrar las imagenes de los laterales
-		JLabel lbl_totem_izq = new JLabel("");
+		JLabel lbl_totem_izq = imgTotem();
         lbl_totem_izq.setIcon(new ImageIcon(Ventana_Principal.class.getResource("/IMAGENES/Totem.png")));
         lbl_totem_izq.setBounds(110, 150, 360, 371);
         contentPane.add(lbl_totem_izq);
@@ -269,5 +282,17 @@ import java.awt.event.ActionEvent;
        lbl_totem_der.setIcon(new ImageIcon(Ventana_Principal.class.getResource("/IMAGENES/Totem.png")));
        lbl_totem_der.setBounds(1460, 150, 360, 371);
        contentPane.add(lbl_totem_der);
+	}
+
+	private JLabel imgTotem() 
+	{
+	JLabel lbl_totem_izq = new JLabel("");
+	return lbl_totem_izq;
+	}
+
+	private JButton crearBotonJueves() 
+	{
+	JButton btn_comprar_negras = new JButton("500€ COMPRAR\r\n");
+	return btn_comprar_negras;
 	} 
 }

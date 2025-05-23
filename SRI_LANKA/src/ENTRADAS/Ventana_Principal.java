@@ -94,7 +94,8 @@ public class Ventana_Principal extends JFrame {
         	public void actionPerformed(ActionEvent e) 
         	{
         		Ventana_1 venta= new Ventana_1();
-        		venta.setVisible(true);        	
+        		venta.setVisible(true);
+        		dispose();
         	}
         });
         

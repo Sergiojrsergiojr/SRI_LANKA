@@ -19,24 +19,26 @@ import javax.swing.JTextField;
 
 public class Ventana_1 extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField textField_nombre;
-	private JTextField textField_apellidos;
-	private JTextField textField_edad;
-	private JTextField textField_correo;
+private static final long serialVersionUID = 1L;
+private JPanel contentPane;
+private JTextField textField_nombre;
+private JTextField textField_apellidos;
+private JTextField textField_edad;
+private JTextField textField_correo;
 
-	public static String Nombre;
-	public static String Apellido;
-	public static int Edad;
-	public static String Correo;
+public static String Nombre;
+public static String Apellido;
+public static int Edad;
+public static String Correo;
 	/**
-	 * Launch the application.
-	 */
+	* Launch the application.
+	*/
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
+			public void run() 
+			{
+				try 
+				{
 					Ventana_1 frame = new Ventana_1();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -47,8 +49,8 @@ public class Ventana_1 extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
-	 */
+	* Create the frame.
+	*/
 	public Ventana_1() {
 		setTitle("SRI LANKA");
 		
@@ -101,18 +103,22 @@ public class Ventana_1 extends JFrame {
 	        	        }
 	        	        else 	
 	        	        {
+	        	        	//Para guardar datos en las variables estáticas
 	        	        	Nombre=textField_nombre.getText();
 	        	        	Apellido=textField_apellidos.getText();
 	        	        	Edad=Integer.parseInt(textField_edad.getText());
 	        	        	Correo=textField_correo.getText();
 	        	        	
+	        	        	//Iniciar la ventana 2
 	        	            Ventana_2 venta = new Ventana_2();
 	        	            venta.setVisible(true);
+	        	            dispose();
 	        	        }
 
 	        		}
 	        		catch (NumberFormatException ex) 
 	        		{
+	        			//Por si no se rellena el dato edad
 	        	        JOptionPane.showMessageDialog(null, "Por favor introduce una edad válida (número).");
 	        	    }	     
 	        	}

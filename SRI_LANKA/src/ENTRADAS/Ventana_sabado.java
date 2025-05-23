@@ -34,33 +34,38 @@ import java.awt.event.ActionEvent;
 		public static void main(String[] args)
 		{
 			EventQueue.invokeLater(new Runnable()
-		{
-			public void run()
-		{
-			try
 			{
-				Ventana_sabado frame = new Ventana_sabado();
-				frame.setVisible(true);
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-			}
+				public void run()
+				{
+					try
+					{
+						Ventana_sabado frame = new Ventana_sabado();
+						frame.setVisible(true);
+					}
+					catch (Exception e)
+					{
+						e.printStackTrace();
+					}
+				}
+			});
 		}
-	});
-}
 
 		/**
 		* Create the frame.
 		*/
 		public Ventana_sabado()
 		{
+			//Título de la ventana
 			setTitle("SRI LANKA");
+			//Logo para la ventana
 			setIconImage(new ImageIcon(getClass().getResource("/IMAGENES/Logo.png")).getImage());
+			//Tipo de cerrar la ventana
 			setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+			//Tamaño de la ventana
 			setBounds(0, 0, 1920, 1080);
 			contentPane = new JPanel()
 		{
+			//Fondo de la ventana
 			private static final long serialVersionUID = 1L;
 			private Image backgroundImage = new ImageIcon(
 				Ventana_Principal.class.getResource("/IMAGENES/Fondo.png")).getImage();
@@ -133,6 +138,7 @@ import java.awt.event.ActionEvent;
 				try
 				{
 				Precio=15;
+				//Conexión a la base de datos
 				ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
 				x.conectar();
 				String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
@@ -145,32 +151,36 @@ import java.awt.event.ActionEvent;
 				}
 					Ventana_Pago venta= new Ventana_Pago();
 					venta.setVisible(true);
+					dispose();
 			}
 		});
+		
 		btn_comprar_1consu_sabado.setBounds(1112, 262, 121, 27);
 		contentPane.add(btn_comprar_1consu_sabado);
 
-		JButton btn_comprar_2consu_sabado = new JButton("20€ COMPRAR");
+		JButton btn_comprar_2consu_sabado = boton20euros();
 		btn_comprar_2consu_sabado.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-			try
-			{
-				Precio=20;
-				ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
-				x.conectar();
-				String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
-				x.ejecutarInsertDeleteUpdate(sentencia);
-				x.desconectar();
-			}
-			catch (SQLException ex)
-			{
+				try
+				{
+					Precio=20;
+					//Conexión a la base de datos
+					ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
+					x.conectar();
+					String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
+					x.ejecutarInsertDeleteUpdate(sentencia);
+					x.desconectar();
+				}
+				catch (SQLException ex)
+				{
 				ex.printStackTrace();
-			}
+				}
 			
-			Ventana_Pago venta= new Ventana_Pago();
-			venta.setVisible(true);
+				Ventana_Pago venta= new Ventana_Pago();
+				venta.setVisible(true);
+				dispose();
 			}
 		});
 		
@@ -181,12 +191,15 @@ import java.awt.event.ActionEvent;
 		btn_qr_comprar_sabado.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				//Imagen para que al comprar la entrada gartis salga en el JOptionPane
 				ImageIcon icono=new ImageIcon(getClass().getResource("/IMAGENES/pulgalcito.jpg"));
+				//Configuracuión del mensaje para el JOptionPane
 				String mensaje="Entrada comprada correctamente";
 				String titulo="ACEPTADO";
 				JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE, icono);
 			}
 		});
+		
 		btn_qr_comprar_sabado.setBounds(1112, 448, 140, 27);
 		contentPane.add(btn_qr_comprar_sabado);
 
@@ -208,25 +221,28 @@ import java.awt.event.ActionEvent;
 		contentPane.add(lbl_mapeo);
 
 		JButton btn_comprar_verdes = new JButton("250€ COMPRAR");
-		btn_comprar_verdes.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e)
+		btn_comprar_verdes.addActionListener(new ActionListener() 
 		{
-			try
+			public void actionPerformed(ActionEvent e)
 			{
-				Precio=250;
-				ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
-				x.conectar();
-				String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
-				x.ejecutarInsertDeleteUpdate(sentencia);
-				x.desconectar();
-			}
-			catch (SQLException ex)
-			{
-				ex.printStackTrace();
-			}
+				try
+				{
+					Precio=250;
+					//Conexión a la base de datos
+					ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
+					x.conectar();
+					String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
+					x.ejecutarInsertDeleteUpdate(sentencia);
+					x.desconectar();
+				}
+				catch (SQLException ex)
+				{
+					ex.printStackTrace();
+				}
 			
-			Ventana_Pago venta= new Ventana_Pago();
-			venta.setVisible(true);
+				Ventana_Pago venta= new Ventana_Pago();
+				venta.setVisible(true);
+				dispose();
 		}
 	});
 		
@@ -238,22 +254,24 @@ import java.awt.event.ActionEvent;
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-			try
-			{			
-				Precio=500;
-				ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
-				x.conectar();
-				String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
-				x.ejecutarInsertDeleteUpdate(sentencia);
-				x.desconectar();
-			}
-			catch (SQLException ex)
-			{
-				ex.printStackTrace();
-			}
+				try
+				{			
+					Precio=500;
+					//Conexión a la base datos
+					ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
+					x.conectar();
+					String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
+					x.ejecutarInsertDeleteUpdate(sentencia);
+					x.desconectar();
+				}
+				catch (SQLException ex)
+				{
+					ex.printStackTrace();
+				}
 			
-			Ventana_Pago venta= new Ventana_Pago();
-			venta.setVisible(true);
+				Ventana_Pago venta= new Ventana_Pago();
+				venta.setVisible(true);
+				dispose();
 			}
 		});
 		
@@ -270,5 +288,10 @@ import java.awt.event.ActionEvent;
 		lbl_totem_der.setIcon(new ImageIcon(Ventana_Principal.class.getResource("/IMAGENES/Totem.png")));
 		lbl_totem_der.setBounds(1460, 150, 360, 371);
 		contentPane.add(lbl_totem_der);
+		}
+
+		private JButton boton20euros() {
+			JButton btn_comprar_2consu_sabado = new JButton("20€ COMPRAR");
+			return btn_comprar_2consu_sabado;
 		}
 	}
