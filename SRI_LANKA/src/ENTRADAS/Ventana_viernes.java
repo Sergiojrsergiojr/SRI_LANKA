@@ -190,10 +190,33 @@ import java.awt.event.ActionEvent;
 		btn_qr_comprar_viernes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				//Imagen para que al comprar la entrada gratis salga en el JOptionPane
 				ImageIcon icono=new ImageIcon(getClass().getResource("/IMAGENES/pulgalcito.jpg"));
+				//Configuracuión del mensaje para el JOptionPane
 				String mensaje="Entrada comprada correctamente";
 				String titulo="ACEPTADO";
 				JOptionPane.showMessageDialog(null, mensaje, titulo, JOptionPane.INFORMATION_MESSAGE, icono);
+
+				Precio=0;
+				//Conectar con la base de datos 
+				ConexionMySQL x= new ConexionMySQL("root", "", "sri_lanka");
+				try 
+				{
+					x.conectar();
+					String sentencia="INSERT INTO entradas(Nombre,Apellido,Edad,Correo,Dia,TipoEntrada) VALUES ('"+Nombre+"','"+Apellido+"','"+Edad+"','"+Correo+"','"+Dia+"','"+Precio+"')";
+					x.ejecutarInsertDeleteUpdate(sentencia);
+					x.desconectar();
+				} 
+				catch (SQLException e1) 
+				{
+					// Excepción
+					e1.printStackTrace();
+				}
+
+				//Que salga la entrada
+				Ventana_Entrada ventanaEntrada = new Ventana_Entrada(getTitle());
+			    ventanaEntrada.setVisible(true);
+			    dispose();
 			}
 		});
 		btn_qr_comprar_viernes.setBounds(1112, 448, 140, 27);
